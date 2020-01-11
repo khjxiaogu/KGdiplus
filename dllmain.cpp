@@ -17,7 +17,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     }
     return TRUE;
 }
-ULONG token;
+ULONG_PTR token;
 void startup() {
 	auto gi=new Gdiplus::GdiplusStartupInput();
 	Gdiplus::GdiplusStartup(&token, gi, NULL);

@@ -81,6 +81,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)_64</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -89,7 +90,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;GDIPLUS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -125,7 +126,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;GDIPLUS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
@@ -142,15 +143,16 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;GDIPLUS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PreprocessorDefinitions>NDEBUG;X64;GDIPLUS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -162,30 +164,37 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\project mad\libzplay-2.02-src\vc++\libzplay_IS_static\IStreamWrapper.cpp" />
-    <ClCompile Include="..\ncbind.cpp" />
-    <ClCompile Include="..\tp_stub.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="GdiplusWindow.cpp" />
     <ClCompile Include="KBrush.cpp" />
     <ClCompile Include="KCLCommons.cpp" />
+    <ClCompile Include="KGraphics.cpp" />
     <ClCompile Include="KImage.cpp" />
     <ClCompile Include="KPath.cpp" />
     <ClCompile Include="KPen.cpp" />
     <ClCompile Include="layerEx.cpp" />
+    <ClCompile Include="ncbind.cpp" />
     <ClCompile Include="propmacros.cpp" />
     <ClCompile Include="PtrStream.cpp" />
+    <ClCompile Include="tp_stub.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\project mad\libzplay-2.02-src\vc++\libzplay_IS_static\IStreamWrapper.h" />
-    <ClInclude Include="..\tp_stub.h" />
     <ClInclude Include="gdip.h" />
+    <ClInclude Include="GdiplusWindow.h" />
     <ClInclude Include="KBrush.h" />
     <ClInclude Include="KCLCommons.h" />
+    <ClInclude Include="KGraphics.h" />
     <ClInclude Include="KImage.h" />
     <ClInclude Include="KPath.h" />
     <ClInclude Include="KPen.h" />
     <ClInclude Include="layerEx.h" />
+    <ClInclude Include="ncbind.hpp" />
+    <ClInclude Include="ncb_foreach.h" />
+    <ClInclude Include="ncb_invoke.hpp" />
     <ClInclude Include="propmacros.h" />
     <ClInclude Include="PtrStream.h" />
+    <ClInclude Include="tp_stub.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

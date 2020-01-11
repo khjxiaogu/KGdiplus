@@ -22,55 +22,57 @@
 #include "gdip.h"
 #define USEISTREAM
 
-//#include "../tp_stub.h"
-#include "../ncbind.hpp"
+#include "tp_stub.h"
+#include "ncbind.hpp"
 #include "KCLCommons.h"
 #include "LayerEx.h"
 #include "propmacros.h"
-#define DEF_METHOD static tjs_error TJS_INTF_METHOD
-#define INTF_ARGS tTJSVariant* r, tjs_int n, tTJSVariant** p, KImage* self
-#define FACTORY_ARGS KImage** inst, tjs_int n, tTJSVariant** p, iTJSDispatch2* objthis
+#define CHECK_OPENED if (!self->gi)TVPThrowExceptionMessage(L"not opened")
+#define CHECK_OPENED_N if (!gi)TVPThrowExceptionMessage(L"not opened")
+
 class KImage
 {
+	typedef KImage THISTYPE;
 	Gdiplus::Bitmap* gi=NULL;
 	iTJSDispatch2* objthis;
 	HICON hr=NULL;
 	KImage(iTJSDispatch2 * objthis):objthis(objthis) {}
 public:
-	DEF_METHOD Factory(FACTORY_ARGS);
+	DEF_FUNCTION  Factory(FACTORY_ARGS);
 	void close();
-	DEF_METHOD open(INTF_ARGS);
-	DEF_METHOD openImage(INTF_ARGS);
-	DEF_METHOD openFile(INTF_ARGS);
-	DEF_METHOD openFileEx(INTF_ARGS);
-	DEF_METHOD openLayer(INTF_ARGS);
-	DEF_METHOD openMainSurface(INTF_ARGS);
-	DEF_METHOD openResource(INTF_ARGS);
-	DEF_METHOD allocate(INTF_ARGS);
-	DEF_METHOD resize(INTF_ARGS);
-	DEF_METHOD cut(INTF_ARGS);
-	DEF_METHOD getIconEx(INTF_ARGS);
-	DEF_METHOD getIcon(INTF_ARGS);
-	DEF_METHOD setPixel(INTF_ARGS);
-	DEF_METHOD getPixel(INTF_ARGS);
-	DEF_METHOD setResolution(INTF_ARGS);
-	DEF_METHOD drawTo(INTF_ARGS);
-	DEF_METHOD doBlur(INTF_ARGS);
-	DEF_METHOD doSharpen(INTF_ARGS);
-	DEF_METHOD doTint(INTF_ARGS);
-	DEF_METHOD doRedEyeCorrection(INTF_ARGS);
-	DEF_METHOD doMatrix(INTF_ARGS);
-	DEF_METHOD doColorLUT(INTF_ARGS);
-	DEF_METHOD doHueSaturationLightness(INTF_ARGS);
-	DEF_METHOD doColorBalance(INTF_ARGS);
-	DEF_METHOD doLevels(INTF_ARGS);
-	DEF_METHOD doColorCurve(INTF_ARGS);
-	int opened();
-	int width();
-	int height();
-	double hdpi();
-	double vdpi();
-	int Bitmap();
+	DEF_FUNCTION open(INTF_ARGS);
+	DEF_FUNCTION openImage(INTF_ARGS);
+	DEF_FUNCTION openFile(INTF_ARGS);
+	DEF_FUNCTION openFileEx(INTF_ARGS);
+	DEF_FUNCTION openLayer(INTF_ARGS);
+	DEF_FUNCTION openMainSurface(INTF_ARGS);
+	DEF_FUNCTION openResource(INTF_ARGS);
+	DEF_FUNCTION allocate(INTF_ARGS);
+	DEF_FUNCTION resize(INTF_ARGS);
+	DEF_FUNCTION cut(INTF_ARGS);
+	DEF_FUNCTION getIconEx(INTF_ARGS);
+	DEF_FUNCTION getIcon(INTF_ARGS);
+	DEF_FUNCTION setPixel(INTF_ARGS);
+	DEF_FUNCTION getPixel(INTF_ARGS);
+	DEF_FUNCTION setResolution(INTF_ARGS);
+	DEF_FUNCTION drawGraph(INTF_ARGS);
+	DEF_FUNCTION doBlur(INTF_ARGS);
+	DEF_FUNCTION doSharpen(INTF_ARGS);
+	DEF_FUNCTION doTint(INTF_ARGS);
+	DEF_FUNCTION doRedEyeCorrection(INTF_ARGS);
+	DEF_FUNCTION doMatrix(INTF_ARGS);
+	DEF_FUNCTION doColorLUT(INTF_ARGS);
+	DEF_FUNCTION doHueSaturationLightness(INTF_ARGS);
+	DEF_FUNCTION doColorBalance(INTF_ARGS);
+	DEF_FUNCTION doLevels(INTF_ARGS);
+	DEF_FUNCTION doColorCurve(INTF_ARGS);
+	int getopened();
+	int getwidth();
+	int getheight();
+	double gethdpi();
+	double getvdpi();
+	tTVInteger getBitmap();
+	tTVInteger getImage();
 };
 CLASS(KImage) {
 	CONSTRUCTOR;
@@ -90,7 +92,8 @@ CLASS(KImage) {
 	FUNCTION(setPixel);
 	FUNCTION(getPixel);
 	FUNCTION(setResolution);
-	FUNCTION(drawTo);
+	FUNCTION(drawGraph);
+	RawCallback(L"drawTo", &Class::drawGraph, 0);
 	FUNCTION(doBlur);
 	FUNCTION(doSharpen);
 	FUNCTION(doTint);
@@ -107,4 +110,5 @@ CLASS(KImage) {
 	PROPERTY_RO(hdpi);
 	PROPERTY_RO(vdpi);
 	PROPERTY_RO(Bitmap);
+	PROPERTY_RO(Image);
 }

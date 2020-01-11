@@ -29,7 +29,7 @@ class PtrStream :
 	size_t size = NULL;
 	size_t current = NULL;
 	PtrStream* refstream = NULL;
-	std::mutex reflock;
+	//std::mutex reflock;
 public:
 	PtrStream(char* ptr, int size, int current = 0,PtrStream*par=NULL);
 	PtrStream(PtrStream* par);

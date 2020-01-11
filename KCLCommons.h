@@ -28,7 +28,7 @@ struct ClassLoaderData {
 #include "PtrStream.h"
 PtrStream* packStream(ClassLoaderData* data) {
 	auto ps= new PtrStream((char*)data->addr, data->size);
-	delete data;
+	//delete data;
 	return ps;
 }
 #endif

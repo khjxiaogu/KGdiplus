@@ -30,12 +30,6 @@
     <ClCompile Include="KImage.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\ncbind.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\tp_stub.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="layerEx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -49,6 +43,18 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="KPath.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KGraphics.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GdiplusWindow.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ncbind.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="tp_stub.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,9 +80,6 @@
     <ClInclude Include="layerEx.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\tp_stub.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="KBrush.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -84,6 +87,24 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="KPath.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KGraphics.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GdiplusWindow.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ncb_invoke.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ncbind.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ncb_foreach.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="tp_stub.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
